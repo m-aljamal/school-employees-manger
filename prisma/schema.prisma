@@ -21,11 +21,18 @@ model School {
 }
 
 model Employee {
-  id       String   @id @default(cuid())
-  name     String
-  schoolId String
-  school   School   @relation(fields: [schoolId], references: [id])
-  jobTitle JobTitle
+  id           String       @id @default(cuid())
+  name         String
+  schoolId     String
+  school       School       @relation(fields: [schoolId], references: [id])
+  jobTitle     JobTitle
+  salary       Int
+  workContract String
+  dateOfStart  DateTime
+  dateOfEnd    DateTime
+  PaidSalaries PaidSalary[]
+  Absence      Absence[]
+  InOut        InOut[]
 }
 
 enum JobTitle {
@@ -35,4 +42,34 @@ enum JobTitle {
   DATA_ENTRY
   MEDIA
 
+}
+
+model PaidSalary {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  paid       Int
+  date       DateTime
+  notes      String
+}
+
+model Absence {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  date       DateTime
+  notes      String
+  approved   Boolean
+  attachment String
+}
+
+model InOut {
+  id         String   @id @default(cuid())
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  date       DateTime
+  notes      String
+  in         DateTime
+  out        DateTime
+  attachment String
 }
