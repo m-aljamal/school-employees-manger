@@ -1,7 +1,8 @@
 async function client(
   endpoind: string,
   { data, headers: customHeaders, ...customeConfig }: any = {}
-) {
+  ) {
+  
   const config = {
     method: data ? "POST" : "GET",
     body: data ? JSON.stringify(data) : undefined,
@@ -13,14 +14,16 @@ async function client(
   };
 
   return window
-    .fetch(`${process.env.API_URL}${endpoind}`, config)
+    .fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoind}`, config)
     .then(async (res) => {
       if (res.status === 401) {
         // await logout();
         // window.location.reload();
         // clear cache
-        window.location.assign(window.location + "?refresh=true");
-        return Promise.reject({ message: "الرجاء تسجيل الدخول" });
+        // window.location.assign(window.location + "?refresh=true");
+        // return Promise.reject({ message: "الرجاء تسجيل الدخول" });
+      console.log('error from client');
+      
       }
       const data = await res.json();
       if (res.ok) {
