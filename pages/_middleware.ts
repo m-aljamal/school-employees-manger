@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-const signedinApis = [
-  "/createusereee"
-];
+const signedinApis = ["/createuser"];
 export default function middleware(req: NextRequest) {
   if (signedinApis.includes(req.nextUrl.pathname)) {
     const token = req.cookies.EMPLOYEE_MANAGER;

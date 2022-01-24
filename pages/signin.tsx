@@ -1,15 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { LoginForm } from "src/components/types";
-const signin = () => {
+import { LoginForm } from "src/utils/types";
+import { client } from "src/utils/api-client";
+import { useAsync } from "src/utils/hook";
+const Signin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>();
-
+  const { run, error } = useAsync();
   const onSubmit = (data: LoginForm) => {
-    console.log(data);
+    run(client("signin", { data }));
   };
 
   return (
@@ -36,4 +38,5 @@ const signin = () => {
   );
 };
 
-export default signin;
+Signin.authPage = true;
+export default Signin;

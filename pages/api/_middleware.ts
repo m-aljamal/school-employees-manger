@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-const signedinApis = ["/api/createuser"];
+const signedinApis = ["/api/createus"];
 export function middleware(req: NextRequest) {
-  let user = false;
-console.log("req.nextUrl",  req.nextUrl);
+  let user = true;
+ 
 
   if (signedinApis.includes(req.nextUrl.pathname)) {
     if (user) {

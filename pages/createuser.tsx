@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { User } from "src/components/types";
+import { User } from "src/utils/types";
 import { client } from "src/utils/api-client";
 import { useAsync } from "src/utils/hook";
 const createuser = () => {
@@ -12,10 +12,8 @@ const createuser = () => {
 
   const { isError, run, isLoading, error, data: user } = useAsync();
   const onSubmit = (data: User) => {
-    run(client("createuser", {data}));
+    run(client("createuser", { data }));
   };
-  console.log("user", user);
-console.log("errors", errors);
 
   return (
     <div>
