@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { User } from "src/utils/types";
 import { client } from "src/utils/api-client";
 import { useAsync } from "src/utils/hook";
-const createuser = () => {
+const CreateAdmin = () => {
   const {
     register,
     handleSubmit,
@@ -43,4 +43,4 @@ const createuser = () => {
   );
 };
 
-export default createuser;
+export default CreateAdmin;

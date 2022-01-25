@@ -11,13 +11,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const token = jwt.sign(
       { id: user.id, username: user.username, time: Date.now() },
       process.env.JWT_SECRET as string,
-      { expiresIn: "12h" }
+      // 1 day
+      { expiresIn: "1d" }
+     
     );
     res.setHeader(
       "Set-Cookie",
       cookie.serialize("EMPLOYEE_MANAGER", token, {
         httpOnly: true,
-        maxAge: 12 * 60 * 60 * 1000,
+        // 1 day
+        maxAge: 60 * 60 * 24,
         path: "/",
         sameSite: "strict",
         secure: process.env.NODE_ENV === "production",
