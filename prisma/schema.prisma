@@ -20,7 +20,7 @@ model User {
 
 model project {
   id        String     @id @default(cuid())
-  name      String      @unique
+  name      String     @unique
   Employee  Employee[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -36,12 +36,18 @@ model Employee {
   jobTitle     JobTitle
   salary       Int
   workContract String
-  dateOfStart  DateTime
-  dateOfEnd    DateTime
+  startDate    DateTime
+  endDate      DateTime?
   PaidSalaries PaidSalary[]
   Absence      Absence[]
   InOut        InOut[]
   avatar       String
+  workHours    Int
+  startTime    DateTime     @db.Time()
+  endTime      DateTime     @db.Time()
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
 }
 
 enum JobTitle {

@@ -28,7 +28,7 @@ const admins = ({ adminList }: any) => {
 
 export default admins;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const adminList = await prisma.user.findMany({});
   return {
     props: {
