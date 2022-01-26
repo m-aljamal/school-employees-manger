@@ -20,7 +20,7 @@ model User {
 
 model project {
   id        String     @id @default(cuid())
-  name      String
+  name      String      @unique
   Employee  Employee[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
