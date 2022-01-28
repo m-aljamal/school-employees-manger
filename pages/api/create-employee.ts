@@ -1,16 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import formatTime from "src/utils/formatTime";
 import { prisma } from "src/utils/prisma";
-import set from "date-fns/set";
-
-function formatTime(time: string) {
-  const [hours, minutes] = time.split(":");
-  return set(new Date(), {
-    hours: +hours + 3,
-    minutes: +minutes,
-    seconds: 0,
-    milliseconds: 0,
-  });
-}
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {

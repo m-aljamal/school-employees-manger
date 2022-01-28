@@ -1,7 +1,9 @@
 import { GetServerSideProps } from "next";
 import React from "react";
+import Absence from "src/components/absence";
 import CreateEmployee from "src/components/CreateEmployee";
 import EmployeesInOut from "src/components/EmployeesInOut";
+import PaidSalary from "src/components/PaidSalary";
 import { prisma } from "src/utils/prisma";
 const Project = ({ project, employees }: any) => {
   return (
@@ -24,9 +26,12 @@ const Project = ({ project, employees }: any) => {
         )}
       </div>
       <hr />
-          <h2>الدوام اليومي</h2>
-          <EmployeesInOut/>
-      <h2>اضافة موظف</h2>
+      <h2>الدوام اليومي</h2>
+      <EmployeesInOut />
+      <hr />
+      <Absence />
+      <hr />
+      <PaidSalary />
       <CreateEmployee />
     </div>
   );

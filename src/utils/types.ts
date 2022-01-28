@@ -31,7 +31,7 @@ export interface IEmployee {
   workContract: string;
   avatar: string;
   workHours: number;
-  startTime: Date ;
+  startTime: Date;
   endTime: Date;
 }
 
@@ -41,4 +41,28 @@ enum JobTitle {
   TEACHER = "TEACHER",
   DATA_ENTRY = "DATA_ENTRY",
   MEDIA = "MEDIA",
+}
+
+export interface IInOut {
+  date: Date;
+  notes: string;
+  in: Date;
+  out: Date;
+  attachment: string;
+}
+
+export interface IAbsence {
+  employeeId: string;
+  date: Date;
+  notes: string;
+  approved: boolean;
+  attachment: string;
+  reason: string;
+}
+
+export interface IPaidSalary {
+  employeeId: string;
+  date: Date;
+  notes: string;
+  amount: number;
 }

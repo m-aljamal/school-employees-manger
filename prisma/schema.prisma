@@ -63,7 +63,7 @@ model PaidSalary {
   id         String   @id @default(cuid())
   employeeId String
   employee   Employee @relation(fields: [employeeId], references: [id])
-  paid       Int
+  amount       Int
   date       DateTime
   notes      String
 }
@@ -76,6 +76,7 @@ model Absence {
   notes      String
   approved   Boolean
   attachment String
+  reason     String
 }
 
 model InOut {
@@ -84,7 +85,7 @@ model InOut {
   employee   Employee @relation(fields: [employeeId], references: [id])
   date       DateTime
   notes      String
-  in         DateTime
-  out        DateTime
+  in         DateTime @db.Time()
+  out        DateTime @db.Time()
   attachment String
 }

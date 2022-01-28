@@ -21,7 +21,8 @@ const CreateEmployee = () => {
   };
 
   return (
-    <div>
+    <div className="bg-red-200 mt-10">
+       <h2>اضافة موظف</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="name">الاسم</label>
