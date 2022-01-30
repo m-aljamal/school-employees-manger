@@ -2,12 +2,11 @@ import { GetServerSideProps } from "next";
 import React from "react";
 import Absence from "src/components/absence";
 import CreateEmployee from "src/components/CreateEmployee";
+import EmployeeChart from "src/components/EmployeeChart";
 import EmployeesInOut from "src/components/EmployeesInOut";
 import PaidSalary from "src/components/PaidSalary";
 import { prisma } from "src/utils/prisma";
 const Project = ({ project, employees }: any) => {
-  console.log(employees);
-  
   return (
     <div>
       <h1>مشروع</h1>
@@ -50,15 +49,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const employees = await prisma.employee.findMany({
     where: {
       projectId: project?.id,
-    },
-    select: {
-      name: true,
-      jobTitle: true,
-      project: true,
-      salary: true,
-      PaidSalaries: true,
-
-      InOut: true,
     },
   });
 
