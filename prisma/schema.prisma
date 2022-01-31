@@ -33,7 +33,8 @@ model Employee {
   name         String
   projectId    String
   project      project      @relation(fields: [projectId], references: [id])
-  jobTitle     JobTitle
+  //jobTitle     JobTitle
+  jobTitle     String
   salary       Int
   workContract String
   startDate    DateTime
@@ -63,7 +64,7 @@ model PaidSalary {
   id         String   @id @default(cuid())
   employeeId String
   employee   Employee @relation(fields: [employeeId], references: [id])
-  amount       Int
+  amount     Int
   date       DateTime
   notes      String
 }
@@ -77,6 +78,7 @@ model Absence {
   approved   Boolean
   attachment String
   reason     String
+  descount   Int
 }
 
 model InOut {
@@ -88,4 +90,5 @@ model InOut {
   in         DateTime @db.Time()
   out        DateTime @db.Time()
   attachment String
+  discount   Int
 }

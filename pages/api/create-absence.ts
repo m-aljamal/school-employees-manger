@@ -6,7 +6,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const absence = await prisma.absence.create({
     data: {
-      employeeId: "ckyvwrbaw00218cyvg36igd6c",
+      employeeId: "ckz2rf30t00053uyvlb6foz7z",
       date: new Date(date),
       notes,
       approved: false,

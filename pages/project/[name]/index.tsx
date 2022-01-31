@@ -1,4 +1,6 @@
 import { GetServerSideProps } from "next";
+import Link from "next/link";
+import CreateInOut from "pages/api/create-in-out";
 import React from "react";
 import Absence from "src/components/absence";
 import CreateEmployee from "src/components/CreateEmployee";
@@ -9,31 +11,23 @@ import { prisma } from "src/utils/prisma";
 const Project = ({ project, employees }: any) => {
   return (
     <div>
-      <h1>مشروع</h1>
-      {project?.name}
-      <hr />
-      <div className="bg-blue-200">
-        <h2 className="my-2">جميع الموظفين</h2>
-        {employees.length ? (
-          employees.map((employee: any) => (
-            <div key={employee.id} className="border p-3">
-              <h3>{employee.name}</h3>
-              <p>{employee.jobTitle}</p>
-              <p>{employee.salary}</p>
-            </div>
-          ))
-        ) : (
-          <p>لا يوجد موظفين</p>
-        )}
+      <h2 className="text-xl">{project?.name}</h2>
+      <div className="flex gap-3 text-sm mt-2">
+        <p>اللوحة</p>
+        <p>/</p>
+        <p>دابق</p>
       </div>
-      <hr />
-      <h2>الدوام اليومي</h2>
+
+      <div className="mt-8">
+        {employees.map((em: any) => (
+          <div key={em.id}>
+            <p>{em.name}</p>
+          </div>
+        ))}
+      </div>
       <EmployeesInOut />
-      <hr />
       <Absence />
-      <hr />
-      <PaidSalary />
-      <CreateEmployee />
+      <Link href={`${project.name}/salaries`}>الرواتب</Link>
     </div>
   );
 };
