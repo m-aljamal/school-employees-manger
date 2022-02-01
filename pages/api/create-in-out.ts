@@ -12,6 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       out: formatTime(out),
       attachment,
       employeeId,
+      discount: 0,
     },
   });
   res.json(inOut);

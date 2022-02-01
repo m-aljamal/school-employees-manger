@@ -1,12 +1,12 @@
-import set from "date-fns/set";
-
 function formatTime(time: string) {
   const [hours, minutes] = time.split(":");
-  return set(new Date(), {
-    hours: +hours + 3,
-    minutes: +minutes,
-    seconds: 0,
-    milliseconds: 0,
-  });
+
+  const date = new Date();
+  date.setUTCHours(+hours);
+  date.setUTCMinutes(+minutes);
+  date.setUTCSeconds(0);
+  date.setUTCMilliseconds(0);
+
+  return date;
 }
 export default formatTime;

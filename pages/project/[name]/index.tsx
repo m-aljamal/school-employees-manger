@@ -8,6 +8,7 @@ import EmployeeChart from "src/components/EmployeeChart";
 import EmployeesInOut from "src/components/EmployeesInOut";
 import PaidSalary from "src/components/PaidSalary";
 import { prisma } from "src/utils/prisma";
+
 const Project = ({ project, employees }: any) => {
   return (
     <div>
@@ -22,10 +23,12 @@ const Project = ({ project, employees }: any) => {
         {employees.map((em: any) => (
           <div key={em.id}>
             <p>{em.name}</p>
+            <p>{em.id}</p>
           </div>
         ))}
       </div>
       <EmployeesInOut />
+      <CreateEmployee />
       <Absence />
       <Link href={`${project.name}/salaries`}>الرواتب</Link>
     </div>

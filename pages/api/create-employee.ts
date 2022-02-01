@@ -27,8 +27,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       workHours: +workHours,
       startTime: formatTime(startTime),
       endTime: formatTime(endTime),
-      projectId: "ckyvw8vm9001464yve6lin8wy",
+      projectId: "ckz47g2b3000064yvxx095nm2",
     },
   });
-  res.json("employee");
+  res.json(employee);
 };

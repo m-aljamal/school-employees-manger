@@ -44,7 +44,7 @@ model Employee {
   InOut        InOut[]
   avatar       String
   workHours    Int
-  startTime    DateTime     @db.Time()
+  startTime    DateTime    @db.Time()
   endTime      DateTime     @db.Time()
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
@@ -78,7 +78,7 @@ model Absence {
   approved   Boolean
   attachment String
   reason     String
-  descount   Int
+  //descount   Int
 }
 
 model InOut {

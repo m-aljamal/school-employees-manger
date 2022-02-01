@@ -15,7 +15,7 @@ const EmployeesInOut = () => {
   const onSubmit = (data: IInOut) => {
     run(
       client("create-in-out", {
-        data: { ...data, employeeId: "ckz2rf30t00053uyvlb6foz7z" },
+        data: { ...data, employeeId: "ckz4hnsru0026zoyvjk6g66tk" },
       })
     );
   };

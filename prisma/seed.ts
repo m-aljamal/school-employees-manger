@@ -66,6 +66,11 @@ const employeesDate = [
 ];
 
 const run = async () => {
+  const project = await prisma.project.create({
+    data: {
+      name: "Imam Shafi",
+    },
+  });
   await Promise.all(
     employeesDate.map((em) => {
       return prisma.employee.create({
@@ -79,7 +84,7 @@ const run = async () => {
           workHours: em.workHours,
           startTime: em.startTime,
           endTime: em.endTime,
-          projectId: em.projectId,
+          projectId: project.id,
         },
       });
     })
