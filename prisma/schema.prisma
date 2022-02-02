@@ -75,7 +75,6 @@ model Absence {
   employee   Employee @relation(fields: [employeeId], references: [id])
   date       DateTime
   notes      String
-  approved   Boolean
   attachment String
   reason     String
   //descount   Int

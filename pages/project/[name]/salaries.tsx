@@ -6,44 +6,34 @@ import endOfMonth from "date-fns/endOfMonth";
 import isAfter from "date-fns/isAfter";
 import differenceInHours from "date-fns/differenceInHours";
 import differenceInMinutes from "date-fns/differenceInMinutes";
+import { countTotalSalaryDiscount } from "src/utils/countTotalSalaryDiscount";
 
 const CreateMonthSalary = ({ employees, project }: any) => {
-  console.log(employees);
-
-  // const date = employees[8].InOut[5].in;
-  // const out = employees[8].InOut[5].out;
-
-  // const startTime = employees[8].startTime;
-  // const endTime = employees[8].endTime;
-
-  // const h = new Date(date).getUTCHours();
-  // const m = new Date(date).getUTCMinutes();
-
-  // const h2 = new Date(out).getUTCHours();
-  // const m2 = new Date(out).getUTCMinutes();
-
-  // const sh = new Date(startTime).getUTCHours();
-  // const sm = new Date(startTime).getUTCMinutes();
-
-  // const eh = new Date(endTime).getUTCHours();
-  // const em = new Date(endTime).getUTCMinutes();
-
-  // const findDef = h - sh;
-  // console.log(findDef);
-
-  // const findDefInMin = m - sm;
-  // console.log(findDefInMin);
-
-  // console.log({ h, m, h2, m2, sh, sm, eh, em });
-
   return (
     <div>
       <h2 className="text-xl">{project?.name}</h2>
+      {employees?.map((employee: any) => (
+        <SingleEmployeeSalary employee={employee} key={employee.id} />
+      ))}
     </div>
   );
 };
 
 export default CreateMonthSalary;
+
+const SingleEmployeeSalary = ({ employee }: any) => {
+  return (
+    <div className="py-3 ">
+      <h2 className="text-xl">{employee?.name}</h2>
+      <div className="flex gap-10">
+        <p>الراتب:</p>
+        <p>{employee?.salary}</p>
+        <p>الخصم</p>
+        <p>{countTotalSalaryDiscount(employee.InOut, employee.salary)}</p>
+      </div>
+    </div>
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const employees = await prisma.employee.findMany({
@@ -55,9 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     select: {
       name: true,
       salary: true,
-      startTime: true,
-      endTime: true,
-
+      id: true,
       InOut: {
         where: {
           date: {
@@ -67,7 +55,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         },
 
         select: {
-          date: true,
           discount: true,
         },
       },
