@@ -15,7 +15,7 @@ const EmployeesInOut = () => {
   const onSubmit = (data: IInOut) => {
     run(
       client("create-in-out", {
-        data: { ...data, employeeId: "ckz4hnsru0026zoyvjk6g66tk" },
+        data: { ...data, employeeId: "ckz5el6sj0011bguxdzyhg1ln" },
       })
     );
   };
@@ -31,16 +31,13 @@ const EmployeesInOut = () => {
           <label htmlFor="notes">notes</label>
           <textarea {...register("notes")} id="notes" />
         </div>
+        {/* string حصة حصتين يوم */}
         <div>
-          <label htmlFor="in">in</label>
-          <input type="time" id="in" {...register("in")} />
+          <label htmlFor="discount">discount</label>
+          <input type="string" id="discount" {...register("discount")} />
         </div>
         <div>
-          <label htmlFor="out">out</label>
-          <input {...register("out")} type="time" />
-        </div>
-        <div>
-          <label htmlFor="attendance">attendance</label>
+          <label htmlFor="attachment">attachment</label>
           <input {...register("attachment")} type="text" />
         </div>
         <button type="submit">تسجيل</button>

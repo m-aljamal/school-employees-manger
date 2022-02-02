@@ -8,31 +8,33 @@ import differenceInHours from "date-fns/differenceInHours";
 import differenceInMinutes from "date-fns/differenceInMinutes";
 
 const CreateMonthSalary = ({ employees, project }: any) => {
-  const date = employees[8].InOut[5].in;
-  const out = employees[8].InOut[5].out;
+  console.log(employees);
 
-  const startTime = employees[8].startTime;
-  const endTime = employees[8].endTime;
+  // const date = employees[8].InOut[5].in;
+  // const out = employees[8].InOut[5].out;
 
-  const h = new Date(date).getUTCHours();
-  const m = new Date(date).getUTCMinutes();
+  // const startTime = employees[8].startTime;
+  // const endTime = employees[8].endTime;
 
-  const h2 = new Date(out).getUTCHours();
-  const m2 = new Date(out).getUTCMinutes();
+  // const h = new Date(date).getUTCHours();
+  // const m = new Date(date).getUTCMinutes();
 
-  const sh = new Date(startTime).getUTCHours();
-  const sm = new Date(startTime).getUTCMinutes();
+  // const h2 = new Date(out).getUTCHours();
+  // const m2 = new Date(out).getUTCMinutes();
 
-  const eh = new Date(endTime).getUTCHours();
-  const em = new Date(endTime).getUTCMinutes();
+  // const sh = new Date(startTime).getUTCHours();
+  // const sm = new Date(startTime).getUTCMinutes();
 
-  const findDef = h - sh;
-  console.log(findDef);
+  // const eh = new Date(endTime).getUTCHours();
+  // const em = new Date(endTime).getUTCMinutes();
 
-  const findDefInMin = m - sm;
-  console.log(findDefInMin);
+  // const findDef = h - sh;
+  // console.log(findDef);
 
-  console.log({ h, m, h2, m2, sh, sm, eh, em });
+  // const findDefInMin = m - sm;
+  // console.log(findDefInMin);
+
+  // console.log({ h, m, h2, m2, sh, sm, eh, em });
 
   return (
     <div>
@@ -55,21 +57,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       salary: true,
       startTime: true,
       endTime: true,
+
       InOut: {
         where: {
           date: {
             gte: startOfMonth(new Date()),
             lte: endOfMonth(new Date()),
           },
-          // in: Thu Jan 01 1970 09:50:00 GMT+0200 (GMT+03:00)
-          // in:{
-          //   gte:
-          // }
         },
+
         select: {
           date: true,
-          in: true,
-          out: true,
+          discount: true,
         },
       },
       Absence: {

@@ -46,8 +46,7 @@ enum JobTitle {
 export interface IInOut {
   date: Date;
   notes: string;
-  in: Date;
-  out: Date;
+  discount: string;
   attachment: string;
 }
 
